@@ -1,0 +1,21 @@
+version: "3.4"
+services:
+  webapi: 
+    image: fdebarros/carsys:1.0
+    ports:
+      - 8080:8080
+    labels:
+      - "com.fdebarros.context=carsys"
+      - "com.fdebarros.app=carsys"
+      - "com.fdebarros.app.version=1.0"
+      - "com.fdebarros.app.detail=carsys"
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+    networks:
+      - fdebarros_network
+networks:
+  fdebarros_network:
+    external: true
+
